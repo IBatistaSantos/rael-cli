@@ -6,10 +6,7 @@ import { execSync } from 'child_process';
   description: 'Push committed changes to the remote repository',
 })
 export class PushCommand extends CommandRunner {
-  async run(
-    passedParams: string[],
-    options?: Record<string, any>,
-  ): Promise<void> {
+  async run(): Promise<void> {
     try {
       if (!this.isGitRepository()) {
         console.error(
