@@ -12,6 +12,7 @@ import { DeleteReposCommand } from './commands/repos/delete-repos.command';
 import { OpenAIService } from './lib/openai.service';
 import { CommitCommand } from './commands/repos/commit.command';
 import { PushCommand } from './commands/repos/push.command';
+import { PullCommand } from './commands/repos/pull.command';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -37,6 +38,7 @@ import { PushCommand } from './commands/repos/push.command';
     PushCommand,
     PrismaService,
     OpenAIService,
+    PullCommand,
     GoogleAuthCallback,
     {
       provide: 'RepositoryProvider',
