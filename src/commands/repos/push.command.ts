@@ -6,7 +6,10 @@ import { execSync } from 'child_process';
   description: 'Push committed changes to the remote repository',
 })
 export class PushCommand extends CommandRunner {
-  async run(): Promise<void> {
+  async run(
+    passedParams: string[],
+    options?: Record<string, any>,
+  ): Promise<void> {
     try {
       if (!this.isGitRepository()) {
         console.error(
@@ -15,8 +18,19 @@ export class PushCommand extends CommandRunner {
         return;
       }
 
-      console.log('Pushing changes to the remote repository...');
-      this.executeCommand('git push');
+      const currentBranch = this.getCurrentBranchName();
+      if (!this.isUpstreamConfigured(currentBranch)) {
+        console.log(
+          `⚠️  The current branch "${currentBranch}" has no upstream branch.`,
+        );
+        console.log(
+          `Setting upstream and pushing branch "${currentBranch}" to origin...`,
+        );
+        this.executeCommand(`git push --set-upstream origin ${currentBranch}`);
+      } else {
+        console.log('Pushing changes to the remote repository...');
+        this.executeCommand('git push');
+      }
 
       console.log('✅ Changes pushed successfully.');
     } catch (error) {
@@ -28,6 +42,26 @@ export class PushCommand extends CommandRunner {
     try {
       this.executeCommand('git rev-parse --is-inside-work-tree', true);
       return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  private getCurrentBranchName(): string {
+    try {
+      return this.executeCommand('git branch --show-current', true);
+    } catch (error) {
+      throw new Error('❌ Failed to get current branch name');
+    }
+  }
+
+  private isUpstreamConfigured(branchName: string): boolean {
+    try {
+      const result = this.executeCommand(
+        `git rev-parse --abbrev-ref --symbolic-full-name ${branchName}@{u}`,
+        true,
+      );
+      return result.length > 0;
     } catch (error) {
       return false;
     }
