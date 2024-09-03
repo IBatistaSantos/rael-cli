@@ -14,6 +14,7 @@ import { CommitCommand } from './commands/repos/commit.command';
 import { PushCommand } from './commands/repos/push.command';
 import { PullCommand } from './commands/repos/pull.command';
 import { LogCommand } from './commands/repos/logs.command';
+import { BranchCommand } from './commands/branch/create-branch.command';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -38,6 +39,7 @@ import { LogCommand } from './commands/repos/logs.command';
     CommitCommand,
     PushCommand,
     LogCommand,
+    BranchCommand,
     PrismaService,
     OpenAIService,
     PullCommand,
