@@ -13,6 +13,7 @@ import { OpenAIService } from './lib/openai.service';
 import { CommitCommand } from './commands/repos/commit.command';
 import { PushCommand } from './commands/repos/push.command';
 import { PullCommand } from './commands/repos/pull.command';
+import { LogCommand } from './commands/repos/logs.command';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -36,6 +37,7 @@ import { PullCommand } from './commands/repos/pull.command';
     DeleteReposCommand,
     CommitCommand,
     PushCommand,
+    LogCommand,
     PrismaService,
     OpenAIService,
     PullCommand,
