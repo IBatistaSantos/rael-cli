@@ -15,6 +15,7 @@ import { PushCommand } from './commands/repos/push.command';
 import { PullCommand } from './commands/repos/pull.command';
 import { LogCommand } from './commands/repos/logs.command';
 import { DeleteBranchCommand } from './commands/branch/delete-branch.command';
+import { BranchCommand } from './commands/branch/create-branch.command';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -40,6 +41,7 @@ import { DeleteBranchCommand } from './commands/branch/delete-branch.command';
     CommitCommand,
     PushCommand,
     LogCommand,
+    BranchCommand,
     PrismaService,
     OpenAIService,
     PullCommand,
