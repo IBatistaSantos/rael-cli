@@ -10,6 +10,7 @@ import { GithubProvider } from './providers/github/GithubProvider';
 import { ListReposCommand } from './commands/repos/list-repos.command';
 import { DeleteReposCommand } from './commands/repos/delete-repos.command';
 import { OpenAIService } from './lib/openai.service';
+import { CommitCommand } from './commands/repos/commit.command';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -31,6 +32,7 @@ import { OpenAIService } from './lib/openai.service';
     CreateReposCommand,
     ListReposCommand,
     DeleteReposCommand,
+    CommitCommand,
     PrismaService,
     OpenAIService,
     GoogleAuthCallback,
