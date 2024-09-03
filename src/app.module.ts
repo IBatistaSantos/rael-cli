@@ -14,6 +14,7 @@ import { CommitCommand } from './commands/repos/commit.command';
 import { PushCommand } from './commands/repos/push.command';
 import { PullCommand } from './commands/repos/pull.command';
 import { LogCommand } from './commands/repos/logs.command';
+import { DeleteBranchCommand } from './commands/branch/delete-branch.command';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -35,6 +36,7 @@ import { LogCommand } from './commands/repos/logs.command';
     CreateReposCommand,
     ListReposCommand,
     DeleteReposCommand,
+    DeleteBranchCommand,
     CommitCommand,
     PushCommand,
     LogCommand,
