@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { Repository } from '@prisma/client';
 import { CommandRunner, Command } from 'nest-commander';
+import { getToken } from '../../auth/get-token';
 import { PrismaService } from 'src/lib/prisma.service';
-import { getToken } from '../../commands/auth/login/get-token';
 
 const chalk = require('chalk');
 

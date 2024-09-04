@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from '../../../../lib/prisma.service';
+import { PrismaService } from '../../lib/prisma.service';
 import { google } from 'googleapis';
 import { GoogleConfig } from './Google';
 

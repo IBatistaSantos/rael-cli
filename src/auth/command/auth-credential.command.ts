@@ -1,5 +1,5 @@
 import { Command, CommandRunner, Option } from 'nest-commander';
-import { PrismaService } from '../../../../lib/prisma.service';
+import { PrismaService } from '../../lib/prisma.service';
 import { compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 

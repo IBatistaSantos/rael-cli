@@ -3,7 +3,7 @@ import { Inject } from '@nestjs/common';
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { PrismaService } from 'src/lib/prisma.service';
 import { RepositoryProvider } from 'src/providers/RepositoryProvider';
-import { getToken } from '../../commands/auth/login/get-token';
+import { getToken } from '../../auth/get-token';
 import { JwtService } from '@nestjs/jwt';
 const chalk = require('chalk');
 
