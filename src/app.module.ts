@@ -5,20 +5,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GoogleAuthCommand } from './commands/auth/login/command/auth-google.command';
 import { GoogleAuthCallback } from './commands/auth/login/services/GoogleAuthCallback';
-import { CreateReposCommand } from './commands/repos/create-repos.command';
-import { GithubProvider } from './providers/github/GithubProvider';
-import { ListReposCommand } from './commands/repos/list-repos.command';
-import { DeleteReposCommand } from './commands/repos/delete-repos.command';
+
 import { OpenAIService } from './lib/openai.service';
-import { CommitCommand } from './commands/repos/commit.command';
-import { PushCommand } from './commands/repos/push.command';
-import { PullCommand } from './commands/repos/pull.command';
-import { LogCommand } from './commands/repos/logs.command';
 
 import { BranchModule } from './branches/branch.module';
+import { RepoModule } from './repos/repo.module';
 @Module({
   imports: [
-    BranchModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -30,31 +23,16 @@ import { BranchModule } from './branches/branch.module';
       }),
       inject: [ConfigService],
     }),
+    BranchModule,
+    RepoModule,
   ],
   controllers: [],
   providers: [
     AuthCredentialCommand,
     GoogleAuthCommand,
-    CreateReposCommand,
-    ListReposCommand,
-    DeleteReposCommand,
-
-    CommitCommand,
-    PushCommand,
-    LogCommand,
-
     PrismaService,
     OpenAIService,
-    PullCommand,
     GoogleAuthCallback,
-    {
-      provide: 'RepositoryProvider',
-      useClass: GithubProvider,
-    },
-    {
-      provide: 'OpenAIService',
-      useClass: OpenAIService,
-    },
   ],
 })
 export class AppModule {}
