@@ -14,10 +14,11 @@ import { CommitCommand } from './commands/repos/commit.command';
 import { PushCommand } from './commands/repos/push.command';
 import { PullCommand } from './commands/repos/pull.command';
 import { LogCommand } from './commands/repos/logs.command';
-import { DeleteBranchCommand } from './commands/branch/delete-branch.command';
-import { BranchCommand } from './commands/branch/create-branch.command';
+
+import { BranchModule } from './branches/branch.module';
 @Module({
   imports: [
+    BranchModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -37,11 +38,11 @@ import { BranchCommand } from './commands/branch/create-branch.command';
     CreateReposCommand,
     ListReposCommand,
     DeleteReposCommand,
-    DeleteBranchCommand,
+
     CommitCommand,
     PushCommand,
     LogCommand,
-    BranchCommand,
+
     PrismaService,
     OpenAIService,
     PullCommand,
