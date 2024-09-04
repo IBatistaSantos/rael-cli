@@ -2,7 +2,7 @@
 import { Repository } from '@prisma/client';
 import { CommandRunner, Command } from 'nest-commander';
 import { PrismaService } from 'src/lib/prisma.service';
-import { getToken } from '../auth/login/get-token';
+import { getToken } from '../../commands/auth/login/get-token';
 
 const chalk = require('chalk');
 

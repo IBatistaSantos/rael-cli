@@ -1,7 +1,7 @@
 import { JwtService } from '@nestjs/jwt';
 import { Command, CommandRunner, Option } from 'nest-commander';
 import { PrismaService } from '../../lib/prisma.service';
-import { getToken } from '../auth/login/get-token';
+import { getToken } from '../../commands/auth/login/get-token';
 import { RepositoryProvider } from '../../providers/RepositoryProvider';
 import { Inject, Logger } from '@nestjs/common';
 import { OpenAIService } from 'src/lib/openai.service';
